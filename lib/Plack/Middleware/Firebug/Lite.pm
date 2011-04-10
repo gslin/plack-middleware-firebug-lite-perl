@@ -69,8 +69,6 @@ sub prepare_app {
     $self->url('//getfirebug.com/firebug-lite.js') unless defined $self->url;
 }
 
-use namespace::clean;
-
 =head1 AUTHOR
 
 Gea-Suan Lin, C<< <gslin at gslin.org> >>
