@@ -29,6 +29,7 @@ Currently it will check if Content-Type is C<text/html>.
 
 use parent 'Plack::Middleware';
 
+use HTML::Entities;
 use Plack::Util::Accessor qw/url/;
 use namespace::autoclean;
 
@@ -53,9 +54,10 @@ sub call {
         Plack::Util::foreach($res->[2], sub { push @$body, $_[0]; });
         $body = join '', @$body;
 
+        my $url = encode_entities($self->url, '<>&"');
+
         # Insert Firebug Lite code and replace it.
-        my $url = $self->url;
-        $body =~ s{^(.*)</body\s*>}{\1<script src="$url" type="text/javascript"></script></body>}i;
+        $body =~ s{^(.*)</body\s*>}{$1<script src="$url" type="text/javascript"></script></body>}i;
         $res->[2] = [$body];
         $h->set('Content-Length', length $body);
 
