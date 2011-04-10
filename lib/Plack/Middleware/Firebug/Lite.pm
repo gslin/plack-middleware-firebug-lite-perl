@@ -56,7 +56,7 @@ sub call {
         my $url = encode_entities($self->url, '<>&"');
 
         # Insert Firebug Lite code and replace it.
-        $body =~ s{^(.*)</body\s*>}{$1<script src="$url" type="text/javascript"></script></body>}i;
+        $body =~ s{^(.*)\</body\s*\>}{$1<script src="$url" type="text/javascript"></script></body>}is;
         $res->[2] = [$body];
         $h->set('Content-Length', length $body);
 
