@@ -31,7 +31,6 @@ use parent 'Plack::Middleware';
 
 use HTML::Entities;
 use Plack::Util::Accessor qw/url/;
-use namespace::autoclean;
 
 sub call {
     my ($self, $env) = @_;
@@ -69,6 +68,8 @@ sub prepare_app {
     my $self = shift;
     $self->url('//getfirebug.com/firebug-lite.js') unless defined $self->url;
 }
+
+use namespace::clean;
 
 =head1 AUTHOR
 
