@@ -53,6 +53,7 @@ sub call {
         Plack::Util::foreach($res->[2], sub { push @$body, $_[0]; });
         $body = join '', @$body;
 
+        # Keep url valid
         my $url = encode_entities($self->url, '<>&"');
 
         # Insert Firebug Lite code and replace it.
