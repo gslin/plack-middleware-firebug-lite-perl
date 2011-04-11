@@ -69,6 +69,10 @@ sub prepare_app {
     $self->url('//getfirebug.com/firebug-lite.js') unless defined $self->url;
 }
 
+=head1 SEEALSO
+
+Firebug Lite: L<http://getfirebug.com/firebuglite>.
+
 =head1 AUTHOR
 
 Gea-Suan Lin, C<< <gslin at gslin.org> >>
